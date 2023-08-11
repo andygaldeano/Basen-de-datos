@@ -25,10 +25,10 @@ FROM canciones
 WHERE compositor <> ""
 ORDER BY compositor;
 /*Modificar la consulta para incluir únicamente los compositores que tengan más de 10 canciones.*/
-SELECT compositor, nombre
+SELECT compositor, count(*)
 FROM canciones
-WHERE compositor <> "" and compositor > 10
-ORDER BY compositor;
+group BY compositor
+Having Count(*) > 10;
 /*5. Facturas
 Listar el total facturado agrupado por ciudad.
 Modificar el listado del punto (a) mostrando únicamente las ciudades de Canadá.
