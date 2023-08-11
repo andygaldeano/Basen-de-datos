@@ -8,15 +8,28 @@ WHERE milisegundos > 2000;
 SELECT *
 FROM canciones
 WHERE nombre LIKE 'a%' or 'e%' or 'i%' or 'o%' or 'u%';
-/*Listar las canciones ordenadas por compositor en forma descendente. Luego, por nombre en forma ascendente. Incluir únicamente aquellas canciones que tengan compositor. */
-SELECT compositor
+/*Listar las canciones ordenadas por compositor en forma descendente.*/ 
+SELECT compositor, nombre
 FROM canciones
 WHERE compositor > "a"
-ORDER BY compositor;
+ORDER BY compositor DESC;
+/*Luego, por nombre en forma ascendente. Incluir únicamente aquellas canciones que tengan compositor. */
+SELECT compositor, nombre
+FROM canciones
+WHERE nombre > "a" and compositor <> ""
+ORDER BY nombre;
 /*Canciones
-Listar la cantidad de canciones de cada compositor. 
-Modificar la consulta para incluir únicamente los compositores que tengan más de 10 canciones. 
-5. Facturas
+Listar la cantidad de canciones de cada compositor.*/
+SELECT compositor, nombre
+FROM canciones
+WHERE compositor <> ""
+ORDER BY compositor;
+/*Modificar la consulta para incluir únicamente los compositores que tengan más de 10 canciones.*/
+SELECT compositor, nombre
+FROM canciones
+WHERE compositor <> "" and compositor > 10
+ORDER BY compositor;
+/*5. Facturas
 Listar el total facturado agrupado por ciudad.
 Modificar el listado del punto (a) mostrando únicamente las ciudades de Canadá.
 Modificar el listado del punto (a) mostrando únicamente las ciudades con una facturación mayor a 38.
